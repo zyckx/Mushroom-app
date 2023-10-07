@@ -16,25 +16,6 @@
 					</block>
 				</view>
 			</view>
-
-			<view @click="showModal" class="left_box shadow-warp" style="padding: 20rpx 20rpx 20rpx 10rpx">
-				<view class="cu-avatar lgs round margin-right-sm margin-left-xs fl"
-					style="background-image: url(https://cdn.zhoukaiwen.com/qdpz_kt1.svg)"></view>
-				<view class="text-bold fl margin-top-xs text-shadow">菌棒在线识别 ·<text class="text-orange">点击上图片</text>
-				</view>
-				<view class="text-grey text-sm margin-top-xs fl text-shadow">在线识别菌棒污染 👉</view>
-			</view>
-
-			<view class="right_box shadow-warp" @click="goBasic">
-				<button class="content cu-btn" style="display: contents">
-					<view class="text-xxl" style="height: 64rpx; margin-top: 12rpx">
-						<image src="https://cdn.zhoukaiwen.com/qdpz_hz1.svg" mode="widthFix" style="width: 65rpx">
-						</image>
-					</view>
-					<view class="text-shadow text-black text-bold" style="font-size: 26rpx; margin-top: 14rpx">更多功能
-					</view>
-				</button>
-			</view>
 		</view>
 		<view class="mainBox flex justify-between">
 			<view @click="uploadImage()"
@@ -63,31 +44,9 @@
 			<view class="flex">
 				<view @click="goBasic" class="flex-sub bg-white padding-sm margin-sm radius shadow-warp"
 					style="line-height: 80rpx">
-					<image class="fl margin-right-sm" src="https://cdn.zhoukaiwen.com/qdpz_kt1.svg" mode="widthFix"
-						style="width: 68rpx; margin-top: 8rpx"></image>
-					<view class="text-shadow text-bold">功能开发中.....</view>
-				</view>
-
-				<view @click="goBasic" class="flex-sub bg-white padding-sm margin-sm radius shadow-warp"
-					style="line-height: 80rpx">
-					<image class="fl margin-right-sm" src="https://www.zhoukaiwen.com/img/luck_draw.svg" mode="widthFix"
-						style="width: 74rpx; margin-top: 2rpx"></image>
-					<view class="text-shadow text-bold">功能开发中.....</view>
-				</view>
-			</view>
-			<view class="flex">
-				<view @click="goBasic" class="flex-sub bg-white padding-sm margin-sm radius shadow-warp"
-					style="line-height: 80rpx">
 					<image class="fl margin-right-sm" src="https://cdn.zhoukaiwen.com/pic5.svg" mode="widthFix"
 						style="width: 68rpx; margin-top: 8rpx"></image>
-					<view class="text-shadow text-bold">功能开发中.....</view>
-				</view>
-
-				<view @click="goBasic" class="flex-sub bg-white padding-sm margin-sm radius shadow-warp"
-					style="line-height: 80rpx">
-					<image class="fl margin-right-sm" src="https://cdn.zhoukaiwen.com/qdpz_vr.svg" mode="widthFix"
-						style="width: 68rpx; margin-top: 8rpx"></image>
-					<view class="text-shadow text-bold">功能开发中.....</view>
+					<view class="text-shadow text-bold">病害治理方法：</view>
 				</view>
 			</view>
 		</view>
@@ -97,11 +56,12 @@
 
 <script>
 	import request from "@/common/request.js";
+
 	export default {
 		data() {
 			return {
 				ImageList: {
-					result: "暂无识别结果",
+					result: "请上传图片",
 					save_path: "https://cdn.zhoukaiwen.com/qdpz_pic1.svg",
 				},
 				cardCur: 0,
@@ -112,35 +72,13 @@
 						imageUrl: "https://cdn.zhoukaiwen.com/qh_banner8.jpg",
 					},
 				],
-				modalName: null, //会员弹窗
 			};
 		},
 		onShow() {},
 		mounted() {},
 		methods: {
-			showModal() {
-				this.modalName = "Modal";
-			},
-			hideModal() {
-				this.modalName = null;
-			},
 			cardSwiper(e) {
 				this.cardCur = e.detail.current;
-			},
-			goPoster() {
-				uni.navigateTo({
-					url: "../main/posterList",
-				});
-			},
-			goPicEditor() {
-				uni.navigateTo({
-					url: "/tn_components/imageEditor",
-				});
-			},
-			goMatting() {
-				uni.navigateTo({
-					url: "../main/matting",
-				});
 			},
 			uploadImage() {
 				uni.chooseImage({
@@ -152,7 +90,7 @@
 							title: "正在识别中",
 						});
 						uni.uploadFile({
-							url: "http://121.40.102.38:5000/upload", //post请求的地址
+							url: "http://101.42.229.5:5000/upload", //post请求的地址
 							filePath: tempFilePaths[0],
 							name: "file",
 							// formData: {
@@ -161,9 +99,11 @@
 							success: (uploadFileRes) => {
 								//这里要注意，uploadFileRes.data是个String类型，要转对象的话需要JSON.parse一下
 								var obj = JSON.parse(uploadFileRes.data);
-								console.log(obj.data[0]);
+								var url = obj.data[0].save_path.replace(/\\/g, "/");
+
 								if (obj) {
-									this.ImageList = obj.data[0];
+									this.ImageList = obj.data[0]
+									this.ImageList.save_path = url
 									uni.hideLoading();
 									uni.showToast({
 										title: "识别成功",
@@ -178,12 +118,17 @@
 			previewImage(index) {
 				let imagePreList = []
 				imagePreList.push(this.ImageList.save_path)
+				imagePreList[0] = imagePreList[0].replace(/\\/g, "/");
+				console.log(imagePreList[0])
 				uni.previewImage({
 					current: index, // 当前显示图片的索引值
 					urls: imagePreList, // 需要预览的图片列表，photoList要求必须是数组
 					loop: true, // 是否可循环预览
 				});
 			},
+			goBasic() {
+				console.log('1')
+			}
 		},
 	};
 </script>
@@ -224,7 +169,7 @@
 
 	.bgImg {
 		position: relative;
-		margin-bottom: 100rpx;
+		margin-bottom: 10rpx;
 
 		.left_box {
 			position: absolute;

@@ -2,8 +2,7 @@
 	"easycom": {
 		"^u-(.*)": "@/uview-ui/components/u-$1/u-$1.vue"
 	},
-	"pages": [ 
-		{
+	"pages": [{
 			"path": "pages/index/tabbar",
 			"style": {
 				"navigationBarTitleText": "前端铺子",
@@ -18,14 +17,9 @@
 			}
 		},
 		{
-			"path": "pages/video",
+			"path": "pages/diseaseDetail",
 			"style": {
-				"navigationBarTitleText": "视频播放",
-				"usingComponents": {
-					// #ifdef  MP-WEIXIN 
-					"txv-video": "plugin://tencentvideo/video"
-					// #endif
-				}
+				"navigationBarTitleText": "污染详情"
 			}
 		},
 		{
@@ -42,12 +36,7 @@
 				"navigationStyle": "custom"
 			}
 		},
-		{
-			"path": "pages/design",
-			"style": {
-				"navigationStyle": "custom"
-			}
-		},
+
 		{
 			"path": "pages/main/customCamera",
 			"style": {

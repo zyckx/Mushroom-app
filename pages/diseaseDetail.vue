@@ -11,13 +11,6 @@
 					</view>
 				</view>
 
-				<button hover-class='none' class='rightBox' open-type="share">
-					<u-icon label-color="#2979ff" label-size="26" margin-top="12" label-pos="bottom" label="分享一下"
-						name="share" color="#2979ff" size="54"></u-icon>
-				</button>
-
-
-
 			</view>
 
 			<view class="cssBox">
@@ -36,11 +29,7 @@
 
 					<view class="cu-item shadow" v-for="(item,index) in getData.content.methods">
 						<view class="content" style="padding: 0;">
-
-
-
 							<view class="list_content"> {{item}}</view>
-
 						</view>
 					</view>
 				</view>
@@ -90,19 +79,8 @@
 		onLoad() {
 
 		},
-		// 分享小程序
-		onShareAppMessage(res) {
-			return {
-				title: '零基础学习IT知识，直指万元高薪！'
-			};
-		},
 		methods: {
-			videoErrorCallback: function(e) {
-				uni.showModal({
-					content: e.target.errMsg,
-					showCancel: false
-				})
-			}
+
 		}
 	}
 </script>

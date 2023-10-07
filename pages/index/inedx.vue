@@ -35,51 +35,22 @@
 			</view>
 		</view>
 
-		<view class="message-box">
-			<view class="page-section swiper">
-				<view class="page-section-spacing">
-					<swiper style="height: 120rpx;" class="swiper" vertical="ture" circular="true"
-						indicator-dots='false' indicator-color="rgba(0,0,0,.0)" indicator-active-color="rgba(0,0,0,.0)"
-						autoplay="true" interval="4000">
-						<swiper-item class="swiper-list" v-for="(item, index) in messageData" :key="index">
-							<view class="message-tltle">{{item.title}}</view>
-							<view class="message-content"><span>{{item.tag}}</span>{{item.content}}</view>
-						</swiper-item>
-					</swiper>
-				</view>
+		<view class="disease-wrap">
+			<view class="disease-title">
+				<text style="color: #41A9CC;">常见病害</text>
+			</view>
+			<view class="diseases">
+				<div class="disease-box" v-for="item in diseaseLists">
+					<div class="title">{{item.name}}</div>
+					<div class="brief">简介{{item.brief}}</div>
+					<div class="btn">
+
+						<button @click="goToDetail(item.id-1)">了解详情</button>
+					</div>
+				</div>
 			</view>
 		</view>
 
-
-		<image @click="goAboutUs" class="jn_img" src="https://s1.ax1x.com/2023/03/21/ppaeM2n.jpg" mode="widthFix">
-		</image>
-
-		<view class="cu-bar bg-white margin-top-xs">
-			<view class="action sub-title">
-				<text class="text-xl text-bold text-blue text-shadow">热门推荐</text>
-				<text class="text-ABC text-blue">curriculum</text>
-			</view>
-			<view class="action" @click="goVideo"><text class="text-lg text-grey text-shadow">更多</text></view>
-		</view>
-
-		<view class="skill-sequence-panel-content-wrapper">
-			<!--左边虚化-->
-			<view class="hide-content-box hide-content-box-left"></view>
-			<!--右边虚化-->
-			<view class="hide-content-box hide-content-box-right"></view>
-			<scroll-view scroll-x="true" class="kite-classify-scroll">
-				<view class="kite-classify-cell shadow" v-for="(item, index) in curriculum" :key="index">
-					<view :class="'nav-li bg-index' + (index + 1)">
-						<view class="nav-name">{{ item.name }}</view>
-					</view>
-					<view class="nav-content">{{ item.brief }}</view>
-					<view @click="goVideo(item)" class="nav-btn shadow" :class="'bg-index' + (index + 1)">立即学习</view>
-				</view>
-			</scroll-view>
-		</view>
-
-
-		<view style="height: 140rpx;width: 1rpx;"></view>
 	</view>
 </template>
 
@@ -91,7 +62,6 @@
 			return {
 				tip: '点击「添加小程序」，下次访问更便捷',
 				duration: 1,
-
 				scrollTop: 0,
 				old: {
 					scrollTop: 0
@@ -136,18 +106,7 @@
 						name: '个人中心'
 					}
 				],
-				messageData: [{
-						title: '这是一条test数据',
-						tag: 'test',
-						content: '这是一条test数据'
-					},
-					{
-						title: '这是一条test数据',
-						tag: 'test',
-						content: '这是一条test数据'
-					}
-				],
-				curriculum: [{
+				diseaseLists: [{
 						id: 1,
 						name: "绿霉菌",
 						brief: "香菇生产中危害最大的竞争性杂菌。初期菌丝为白斑，逐渐生成浅绿色，菌落中央为深绿，边缘呈白色，后期变为深绿色，严重时可使菌袋全部变成墨绿色。",
@@ -191,155 +150,23 @@
 						},
 					},
 				],
-				projectList: [{
-						"id": 1,
-						"type": 2,
-						"title": "数据可视化大屏电子沙盘集合",
-						"img": "https://cdn.zhoukaiwen.com/Fpa3guHx6xxL5EFAVpmmjlx1uaDr",
-						"content": "【PC端】数据可视化大屏电子沙盘集合，基于：html/dataV/Echarts等等，包含行业：区块链金融行业、智慧社区、智慧物业、智慧政务、智慧交通、通用模板等，包含功能：自定义字体、Css动画、WebSocket实时数据、K线折线等各种图表，iframe嵌套H5/App，替换js数据即可，满足您会议展览、业务监控、风险预警、数据分析展示等多种展示需求，Gitee点个 Star 关注更新，笔芯♥️～&是否商用：可商用&项目价格：0元&链接地址：https://gitee.com/kevin_chou/dataVIS",
-						"author": "kevin",
-						"createdAt": 1664309170029,
-						"state": 1,
-						"seeNum": 4328,
-						"likesNum": 344,
-						"commentNum": 281,
-						"imgList": "https://cdn.zhoukaiwen.com/Fpa3guHx6xxL5EFAVpmmjlx1uaDr,https://cdn.zhoukaiwen.com/Fm1-N1gYEL6bx0MQual5-M0pDoB3,https://cdn.zhoukaiwen.com/Fonph27MToUMEy70Or2aaY-2WqYj,https://cdn.zhoukaiwen.com/FhQ9Lv-5rwU6WnNi0gqr-0gH6Yvb,https://cdn.zhoukaiwen.com/Fk7Bpc46SXNuGFJLyxbBrOQSdPAc,https://cdn.zhoukaiwen.com/FqPj-5Nr4l1pORBoyJDrdOmzIkxt"
-					},
-					{
-						"id": 2,
-						"type": 2,
-						"title": "「易凯商城」电子商城纯前端，易上手～",
-						"img": "https://cdn.zhoukaiwen.com/FlR8wkoy8CpUab4wTajXd5gNEgfQ",
-						"content": "H5版本纯前端商城，页面清晰易上手、部署简单、H5灵活可广泛应用（可App嵌套/微信公众号/H5端），包含：商品展示、商品分类、分销（暂时移除）购物车、地址管理、售后管理、投诉建议、个人中心等页面；&如帮助到您，麻烦Gitee点个 Star 关注版本更新；&是否商用：可商用；&项目价格：0元；&项目链接：https://gitee.com/kevin_chou/ykShop",
-						"author": "Kevin",
-						"createdAt": 1664384780317,
-						"state": 1,
-						"seeNum": 2965,
-						"likesNum": 348,
-						"commentNum": 152,
-						"imgList": "https://cdn.zhoukaiwen.com/FmQUu_zzkFPgfD9mW_s6VUPRfrOu,https://cdn.zhoukaiwen.com/FggyNz97y1XRbqvgGLy8TlHqrk9S,https://cdn.zhoukaiwen.com/FoCAcPkAr33sfNyEIxcqjnpTTWxc,https://cdn.zhoukaiwen.com/FplP6uDupEtz52EY2TSH9driQMDH"
-					}
-				]
 			};
 		},
-		watch: {},
-		mounted() {
-			console.log(this.projectList);
-			// this.getData();
-
-		},
 		methods: {
-			getData() {
-				console.log('数据加载');
-				let opts = {
-					url: 'api/project/list',
-					method: 'get'
-				};
-				uni.showLoading({
-					title: '加载中'
-				});
-				request.httpRequest(opts).then(res => {
-					console.log(res);
-					uni.hideLoading();
-					if (res.statusCode == 200) {
-						this.projectList = res.data.data;
-					} else {
-						this.projectList = [];
-					}
-				});
-			},
 			scroll: function(e) {
 				console.log(e);
 				this.old.scrollTop = e.detail.scrollTop;
 			},
-			goCategorieslist: function(e) {
-				// console.log(e.currentTarget.dataset.mid)
-				if (e.currentTarget.dataset.mid == 1 || e.currentTarget.dataset.mid == 2) {
-					uni.navigateTo({
-						url: '../timeline?mid=' + e.currentTarget.dataset.mid
-					});
-				} else if (e.currentTarget.dataset.mid == 3) {
-					uni.navigateTo({
-						url: '../../os_project/index'
-					});
-				} else if (e.currentTarget.dataset.mid == 4) {
-					this.$emit('ShowNews', 'news')
-					console.log('文章资讯')
-
-				}
-			},
-			goProjectList() {
+			goToDetail(index) {
+				uni.setStorageSync('illitem', this.diseaseLists[index])
 				uni.navigateTo({
-					url: '../project/list'
-				});
-			},
-			goProject(id) {
-				uni.navigateTo({
-					url: '../project/project?id=' + id
-				});
-			},
-			goVideo(item) {
-
-				try {
-					uni.setStorageSync('illitem', item);
-				} catch (e) {
-					// error
-				}
-				uni.navigateTo({
-					url: '../video'
-				});
-			},
-			goAboutUs() {
-				uni.navigateTo({
-					url: '../me/about_us'
+					url: "/pages/diseaseDetail"
 				})
 			}
-		},
-		filters: {
-			formatDate(value) {
-				if (value == undefined) {
-					return;
-				}
-				// let date = new Date(value * 1000);
-				let date = new Date(value);
-				//时间戳为10位需*1000，时间戳为13位的话不需乘1000
-				let y = date.getFullYear();
-				let MM = date.getMonth() + 1;
-				MM = MM < 10 ? ('0' + MM) : MM; //月补0
-				let d = date.getDate();
-				d = d < 10 ? ('0' + d) : d; //天补0
-				let h = date.getHours();
-				h = h < 10 ? ('0' + h) : h; //小时补0
-				let m = date.getMinutes();
-				m = m < 10 ? ('0' + m) : m; //分钟补0
-				let s = date.getSeconds();
-				s = s < 10 ? ('0' + s) : s; //秒补0
-				// return y + '-' + MM + '-' + d; //年月日	 + ' ' + h + ':' + m
-				return y + '-' + MM + '-' + d; //年月日时分秒
-			},
-			typeF(value) {
-				if (!value) {
-					return;
-				}
-				if (value == 2) {
-					return 'Gitee开源'
-				}
-				if (value == 3) {
-					return '可商用'
-				}
-				if (value == 4) {
-					return '商业项目'
-				}
-				if (value == 5) {
-					return '付费模板'
-				}
-				if (value == 6) {
-					return '仅供参考'
-				}
-				if (value == 7) {
-					return '其他类型'
-				}
-			}
+
+
+
+
 		},
 	};
 </script>
@@ -527,5 +354,66 @@
 		-webkit-box-orient: vertical;
 		-webkit-line-clamp: 1;
 		overflow: hidden;
+	}
+
+	.disease-wrap {
+		padding: 5%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		// align-items: center;
+
+		.disease-title {
+			font-size: 40rpx;
+		}
+
+		.diseases {
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			margin-bottom: 100rpx;
+
+			.disease-box {
+				width: 100%;
+				background: #fff;
+				display: flex;
+				flex-direction: column;
+				border-radius: 10rpx;
+				margin-bottom: 20rpx;
+
+
+
+				.title {
+					background: #19cf8a;
+					padding: 3%;
+					color: #fff;
+					font-size: 35rpx;
+					font-weight: 700;
+					border-radius: 10rpx;
+				}
+
+				.brief {
+					background: #fff;
+					padding: 3%;
+					border-radius: 10rpx;
+					text-indent: 2em;
+				}
+
+				.btn {
+					margin: 0 auto;
+					width: 40%;
+
+					button {
+						background: #3B92EC;
+						outline: #0081ff;
+						border-radius: 10rpx;
+						color: #FFFFFF;
+						margin-bottom: 10rpx;
+					}
+				}
+			}
+		}
 	}
 </style>
