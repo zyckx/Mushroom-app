@@ -4,7 +4,7 @@
 		<search v-if="PageCur=='search'"></search>
 		<cases v-if="PageCur=='cases'"></cases>
 		<news v-if="PageCur=='news'"></news>
-		<me v-if="PageCur=='me'"></me>
+		<me v-if="PageCur=='me'" :userInfo="userInfo"></me>
 
 		<view class="box">
 			<view class="cu-bar tabbar bg-white shadow foot">
@@ -18,7 +18,7 @@
 
 				<view class="action" @click="NavChange" data-cur="search">
 					<view class='cuIcon-cu-image'>
-						
+
 						<image v-if="PageCur=='search'" src="../../static/tabBar/shop_cur.png"></image>
 						<image v-if="PageCur != 'search'" src="../../static/tabBar/shop.png"></image>
 					</view>
@@ -32,7 +32,7 @@
 
 				<view class="action" @click="NavChange" data-cur="news">
 					<view class='cuIcon-cu-image'>
-						
+
 						<image v-if="PageCur=='news'" src="../../static/tabBar/order_cur.png"></image>
 						<image v-if="PageCur != 'news'" src="../../static/tabBar/order.png"></image>
 					</view>
@@ -55,11 +55,11 @@
 
 <script>
 	import request from '@/common/request.js';
-	import index from "./inedx.vue";	//首页
-	import search from "./search.vue";	//技术视频
-	import cases from "./main.vue";	//宅家学
-	import news from "./news.vue";	//资讯
-	import me from "./me.vue";	//个人中心
+	import index from "./inedx.vue"; //首页
+	import search from "./search.vue"; //技术视频
+	import cases from "./main.vue"; //宅家学
+	import news from "./news.vue"; //资讯
+	import me from "./me.vue"; //个人中心
 	export default {
 		components: {
 			index,
@@ -72,60 +72,33 @@
 			return {
 				PageCur: 'index',
 				message: '0',
-				openId:'',
-				access_token:'',
-				tip:"我是提示",
-				duration:1
-
+				openId: '',
+				access_token: '',
+				tip: "我是提示",
+				duration: 1,
+				userInfo: {
+					phone: "",
+					pwd: ""
+				}
 			};
 		},
-		// 分享小程序
-		onShareAppMessage(res) {
-			return {
-				title: '学技术·找案例，快来「前端铺子」吧！',
-				imageUrl: 'https://cdn.zhoukaiwen.com/qdpz_share.jpg',
-			};
-		},
-		onLoad(option){
+		onLoad(option) {
 			console.log('来自页面:', option)
-			wx.showShareMenu({
-				withShareTicket: true
-			})
-			if (option.type == 'matting') {
-				uni.navigateTo({
-					url: '../main/matting'
-				})
-				return
-			}
 		},
-		onShareTimeline() {
-			return {
-				title: '学技术·找案例，快来「前端铺子」吧！',
-			}
-		},
+
 		onShow() {
-			this.getData();
+			console.log("接收userinfo数据")
+			let userInfo = uni.getStorageSync("userInfo")
+			console.log(userInfo)
+			if (userInfo != '') {
+				this.userInfo = userInfo
+			} else {
+				this.userInfo.phone = "请登录"
+			}
 		},
 		methods: {
-			getData() {
-				let opts = {
-					url: 'api/blog/list',
-					method: 'get'
-				};
-				uni.showLoading({
-					title: '加载中'
-				});
-				request.httpRequest(opts).then(res => {
-					// console.log(res);
-					uni.hideLoading();
-					if (res.statusCode == 200) {
-						this.message = res.data.data.length;
-					} else {
-						console.log('数据请求错误～');
-					}
-				});
-			},
-			ShowNews(e){
+
+			ShowNews(e) {
 				console.log(e)
 				this.PageCur = e;
 			},
@@ -166,18 +139,20 @@
 </script>
 
 <style lang="scss">
-	.color_main{
+	.color_main {
 		color: #000000;
 		font-weight: 900;
 	}
+
 	.box {
 		margin: 20upx 0;
 	}
+
 	.box view.cu-bar {
 		margin-top: 20upx;
 	}
-	
-	.logo_btn{
+
+	.logo_btn {
 		width: 38*2rpx;
 		height: 38*2rpx;
 		position: absolute;
@@ -189,7 +164,8 @@
 		margin: auto;
 		padding: 0;
 	}
+
 	.cu-bar.tabbar .action.add-action {
-	    padding-top: 56rpx !important;
+		padding-top: 56rpx !important;
 	}
 </style>

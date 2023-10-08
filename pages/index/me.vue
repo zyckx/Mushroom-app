@@ -1,266 +1,228 @@
 <!-- 个人中心 -->
 <template>
 	<view class="components-theme">
-
 		<!-- 弹窗确认 -->
-		<view class="cu-modal" :class="modalName=='Modal'?'show':''">
-			<view class="cu-dialog" style="padding: 300rpx 0 70rpx;">
+		<view class="cu-modal" :class="modalName == 'Modal' ? 'show' : ''">
+			<view class="cu-dialog" style="padding: 300rpx 0 70rpx">
 				<view class="modal_bg"></view>
 				<view class="modal_main">
-					<view class='nav-list margin-top'>
-						<view :class="'nav-li bg-zt' + (index+1)" v-for="(item, index) in inter" :key="index"
-							@click="switchImage(index,item.name)">
-							<view class="nav-name">{{item.name}}</view>
+					<view class="nav-list margin-top">
+						<view :class="'nav-li bg-zt' + (index + 1)" v-for="(item, index) in inter" :key="index"
+							@click="switchImage(index, item.name)">
+							<view class="nav-name">{{ item.name }}</view>
 						</view>
 					</view>
 				</view>
 			</view>
 		</view>
 		<!-- 顶部背景 -->
-		<view class='UCenter-bg'
-			:style="'background-image: url(' + pic[topBackGroupImageIndex].link + ');margin-top:' + CustomBar + 'px;'">
-			<view class='space' v-show="spaceShow">
-				<view class="stars ">
-					<view class="star "></view>
-					<view class="star pink "></view>
-					<view class="star blue "></view>
-					<view class="star yellow "></view>
+		<view class="UCenter-bg" :style="
+        'background-image: url(' +
+        pic[topBackGroupImageIndex].link +
+        ');margin-top:' +
+        CustomBar +
+        'px;'
+      ">
+			<view class="space" v-show="spaceShow">
+				<view class="stars">
+					<view class="star"></view>
+					<view class="star pink"></view>
+					<view class="star blue"></view>
+					<view class="star yellow"></view>
 				</view>
 			</view>
 
 			<block>
-				<view class='text-center' @click="goMedal">
-					<!-- <view class="cu-avatar2 round xl margin-right-sm shadow-blur-lg bg-img open-data">
-						<open-data type="userAvatarUrl"></open-data>
-					</view> -->
+				<view class="text-center" @click="goLogin()">
 					<view class="cu-avatar2 round xl margin-right-sm shadow-blur-lg bg-img open-data"
-						style="overflow: hidden;">
-						<image src="../../static/logo.png" style="width: 100%; height: 100%;"></image>
+						style="overflow: hidden">
+						<image src="../../static/logo.png" style="width: 100%; height: 100%"></image>
 					</view>
-					<view class="padding text-blue text-xl text-bold">
-						你好，开发者！
+					<view class="padding text-white text-xl text-bold" style="font-size: 40rpx;"> {{userInfo.phone}}
 					</view>
-
 				</view>
 			</block>
 
 			<image
-				src='https://cdn.nlark.com/yuque/0/2019/gif/280373/1570670848649-assets/web-upload/3dbaa72a-062b-470f-9b9d-058ff8f85ab8.gif'
-				mode='scaleToFill' class='gif-wave'></image>
+				src="https://cdn.nlark.com/yuque/0/2019/gif/280373/1570670848649-assets/web-upload/3dbaa72a-062b-470f-9b9d-058ff8f85ab8.gif"
+				mode="scaleToFill" class="gif-wave"></image>
 		</view>
 
 		<block>
-			<view class='padding flex text-center text-grey bg-white shadow-warp-my'>
-				<view class='flex flex-sub flex-direction solid-right'>
+			<view class="padding flex text-center text-grey bg-white shadow-warp-my">
+				<view class="flex flex-sub flex-direction solid-right">
 					<view class="text-xxl text-orange">18.6k+</view>
 					<view class="margin-top-sm">
-						<text class='cuIcon-hot'></text> 访客
+						<text class="cuIcon-hot"></text> 访客
 					</view>
 				</view>
-				<view class='flex flex-sub flex-direction solid-right'>
+				<view class="flex flex-sub flex-direction solid-right">
 					<view class="text-xxl text-blue">10.6k</view>
 					<view class="margin-top-sm">
-						<text class='cuIcon-share'></text> 分享
+						<text class="cuIcon-share"></text> 分享
 					</view>
 				</view>
-				<view class='flex flex-sub flex-direction'>
+				<view class="flex flex-sub flex-direction">
 					<view class="text-xxl text-red">3.1k+</view>
 					<view class="margin-top-sm">
-						<text class='cuIcon-like'></text> 点赞
+						<text class="cuIcon-like"></text> 点赞
 					</view>
 				</view>
 			</view>
-
-
-
 			<view class="cu-list menu card-menu margin-top-lg shadow-shop bg-white text-black my-radius sm-border">
 				<view class="cu-item" @tap="showModal" data-target="Modal">
-					<view class='content'>
-						<image src='../../static/me/icon/zhuti.png' class='png' mode='aspectFit'></image>
-						<text class='text-lg margin-sm'>主题切换</text>
+					<view class="content">
+						<image src="../../static/me/icon/zhuti.png" class="png" mode="aspectFit"></image>
+						<text class="text-lg margin-sm">主题切换</text>
 					</view>
-					<view class='action'>
+					<view class="action">
 						<view class="cu-capsule radius">
-							<view class='cu-tag bg-gradual-blue'>
-								<view style="clear: both;"></view>
+							<view class="cu-tag bg-gradual-blue">
+								<view style="clear: both"></view>
 							</view>
 							<view class="cu-tag line-blue">
-								{{picName}}
+								{{ picName }}
 							</view>
 						</view>
 					</view>
 				</view>
-
-
-
-
-
-
-				<view class="cu-item">
-					<button class='content cu-btn' open-type="share">
-						<image src='../../static/me/icon/lvhang.png' class='png' mode='aspectFit'></image>
-						<text class='text-lg margin-sm'>关注项目</text>
-					</button>
-				</view>
-
-
-
-
-
 			</view>
-
 
 			<view class="cu-list menu card-menu margin-bottom-lg shadow-shop bg-white text-black my-radius sm-border">
-
-
 				<view class="cu-item">
-					<button class='content cu-btn' @click="goAboutMe">
-						<image src='../../static/me/icon/xiaoxi.png' class='png' mode='aspectFit'></image>
-						<text class='text-lg margin-sm'>关于作者</text>
+					<button class="content cu-btn" @click="loginout">
+						<image src="../../static/me/icon/xiaoxi.png" class="png" mode="aspectFit"></image>
+						<text class="text-lg margin-sm">退出登录</text>
+					</button>
+				</view>
+				<view class="cu-item">
+					<button class="content cu-btn" @click="goAboutMe">
+						<image src="../../static/me/icon/xiaoxi.png" class="png" mode="aspectFit"></image>
+						<text class="text-lg margin-sm">关于作者</text>
 					</button>
 				</view>
 			</view>
-
 		</block>
-
-
 	</view>
 </template>
 
 <script>
-	var videoAd = null
 	export default {
-		data() {
-			return {
-				// Custom: this.Custom,
-				// CustomBar: this.CustomBar,
-				spaceShow: true,
-				modalName: null,
-				picName: '流星之夜',
-				pic: [{
-					link: 'https://cdn.zhoukaiwen.com/zjx_me_bg1.jpeg',
-					name: '春天'
-				}, {
-					link: 'https://cdn.zhoukaiwen.com/zjx_me_bg2.jpeg',
-					name: '夏天'
-				}, {
-					link: 'https://cdn.zhoukaiwen.com/zjx_me_bg3.jpeg',
-					name: '秋天'
-				}, {
-					link: 'https://cdn.zhoukaiwen.com/zjx_me_bg4.jpeg',
-					name: '冬天'
-				}, {
-					link: 'https://cdn.zhoukaiwen.com/zjx_me_bg5.jpeg',
-					name: '幽静'
-				}, {
-					link: 'https://cdn.zhoukaiwen.com/zjx_me_bg6.jpg',
-					name: '天空'
-				}],
-				topBackGroupImageIndex: 5,
-				inter: [{
-					title: 'mimicry',
-					name: '活力春天',
-					color: ''
-				}, {
-					title: 'theme',
-					name: '清爽夏日',
-					color: ''
-				}, {
-					title: 'theme',
-					name: '金秋之韵',
-					color: ''
-				}, {
-					title: 'theme',
-					name: '冬日之阳',
-					color: ''
-				}, {
-					title: 'theme',
-					name: '幽兰星空',
-					color: ''
-				}, {
-					title: 'theme',
-					name: '流星之夜',
-					color: ''
-				}]
+		props: {
+			userInfo: Object,
+			default: {
+				phone: "请登录",
+				pwd: '111'
 			}
 		},
-		// 分享小程序
-		onShareAppMessage(res) {
+		data() {
 			return {
-				title: '看看这个小程序多好玩～',
-				imageUrl: 'https://cdn.zhoukaiwen.com/qdpz_share.jpg',
+				spaceShow: true,
+				modalName: null,
+				picName: "流星之夜",
+				pic: [{
+						link: "https://cdn.zhoukaiwen.com/zjx_me_bg1.jpeg",
+						name: "春天",
+					},
+					{
+						link: "https://cdn.zhoukaiwen.com/zjx_me_bg2.jpeg",
+						name: "夏天",
+					},
+					{
+						link: "https://cdn.zhoukaiwen.com/zjx_me_bg3.jpeg",
+						name: "秋天",
+					},
+					{
+						link: "https://cdn.zhoukaiwen.com/zjx_me_bg4.jpeg",
+						name: "冬天",
+					},
+					{
+						link: "https://cdn.zhoukaiwen.com/zjx_me_bg5.jpeg",
+						name: "幽静",
+					},
+					{
+						link: "https://cdn.zhoukaiwen.com/zjx_me_bg6.jpg",
+						name: "天空",
+					},
+				],
+				topBackGroupImageIndex: 5,
+				inter: [{
+						title: "mimicry",
+						name: "活力春天",
+						color: "",
+					},
+					{
+						title: "theme",
+						name: "清爽夏日",
+						color: "",
+					},
+					{
+						title: "theme",
+						name: "金秋之韵",
+						color: "",
+					},
+					{
+						title: "theme",
+						name: "冬日之阳",
+						color: "",
+					},
+					{
+						title: "theme",
+						name: "幽兰星空",
+						color: "",
+					},
+					{
+						title: "theme",
+						name: "流星之夜",
+						color: "",
+					},
+				],
 			};
 		},
 		watch: {
 			topBackGroupImageIndex(val) {
-				console.log(val)
+				console.log(val);
 				if (val == 4 || val == 5) {
 					this.spaceShow = true;
 				} else {
 					this.spaceShow = false;
 				}
-			}
+			},
 		},
 		mounted() {
-			// 在页面中定义激励视频广告
-			// let videoAd = null
 
-			// 在页面onLoad回调事件中创建激励视频广告实例
-			// if (wx.createRewardedVideoAd) {
-			//   videoAd = wx.createRewardedVideoAd({
-			//     adUnitId: 'adunit-5620518afa0bd171'
-			//   })
-			//   videoAd.onLoad(() => {})
-			//   videoAd.onError((err) => {})
-			//   videoAd.onClose((res) => {})
-			// }
-			// uni.showToast({
-			//     title: '暂未开放,敬请期待',
-			// 	icon: 'none',
-			//     duration: 2000
-			// });
+		},
+		onShow() {
+
 		},
 		methods: {
-			// playVideo(){
-			// 	videoAd.show()
-			// 	.catch(() => {
-			// 	    videoAd.load()
-			// 	    .then(() => videoAd.show())
-			// 	    .catch(err => {
-			// 	      console.log('激励视频 广告显示失败')
-			// 	    })
-			// 	})
-			// },
-
 			switchImage(index, name) {
 				this.topBackGroupImageIndex = index;
 				this.modalName = null;
 				this.picName = name;
 			},
 			showModal(e) {
-				this.modalName = e.currentTarget.dataset.target
+				this.modalName = e.currentTarget.dataset.target;
 			},
 
 			hideModal(e) {
-				this.modalName = null
+				this.modalName = null;
 			},
 
-
-			goMedal() {
+			goLogin() {
 				uni.navigateTo({
-					url: '../login/login'
-				})
+					url: "../login/login",
+				});
 			},
 			// 关于作者
 			goAboutMe() {
 				uni.showToast({
 					icon: "none",
-					title: "galaxy"
-				})
+					title: "galaxy",
+				});
 			},
-
-		}
-	}
+		},
+	};
 </script>
 
 <style lang="scss" scoped>
@@ -299,7 +261,6 @@
 		mix-blend-mode: screen;
 		height: 100rpx;
 	}
-
 
 	// 头像
 	.cu-avatar2 {
@@ -342,7 +303,6 @@
 		height: 280rpx;
 	}
 
-
 	.shadow-me {
 		box-shadow: 0rpx 0rpx 100rpx 0rpx rgba(0, 0, 0, 0.1);
 	}
@@ -362,18 +322,18 @@
 
 	.my-radius {
 		border-radius: 12rpx;
-		overflow: hidden
+		overflow: hidden;
 	}
 
 	.my-icon image {
 		width: 100rpx;
 		height: 100rpx;
 		display: inline-block;
-		margin: 0 auto
+		margin: 0 auto;
 	}
 
 	.my-iconcolor {
-		background: rgba(255, 255, 255, 0.96)
+		background: rgba(255, 255, 255, 0.96);
 	}
 
 	.shadow-shop {
@@ -389,9 +349,8 @@
 		z-index: 1024;
 		opacity: 0.8;
 		box-shadow: 0rpx 8rpx 30rpx 0rpx rgba(0, 0, 0, 0.3);
-		border: none
+		border: none;
 	}
-
 
 	/* 数字背景 */
 	.shadow-warp-my {
@@ -418,7 +377,6 @@
 		transform: rotate(6deg);
 	}
 
-
 	.bg-product {
 		background-image: linear-gradient(rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0));
 		color: #fff;
@@ -431,12 +389,12 @@
 	.giteeClass {
 		margin-top: 30rpx;
 		font-size: 34rpx;
-		color: #2440B3;
+		color: #2440b3;
 		text-decoration: underline;
 	}
 
 	.cu-dialog {
-		background: #FFFFFF;
+		background: #ffffff;
 		overflow: visible;
 	}
 
@@ -451,7 +409,7 @@
 	}
 
 	.modal_main {
-		background-color: #FFFFFF;
+		background-color: #ffffff;
 	}
 
 	/* 主题色 */
@@ -580,7 +538,6 @@
 		transform: scale(0.24);
 		-webkit-transform: scale(0.24);
 		-moz-transform: scale(0.24);
-
 	}
 
 	.monster {
@@ -600,8 +557,8 @@
 		height: 400px;
 		border-top-left-radius: 200px;
 		border-top-right-radius: 200px;
-		background-color: #3C47D7;
-		box-shadow: 20px 20px 60px #4650E5;
+		background-color: #3c47d7;
+		box-shadow: 20px 20px 60px #4650e5;
 	}
 
 	.monster__face {
@@ -640,7 +597,7 @@
 		width: 100%;
 		height: 0%;
 		overflow: hidden;
-		border: 25px solid #FFC333;
+		border: 25px solid #ffc333;
 		border-radius: 100px;
 		background-color: #810332;
 		animation: mouth 1.75s infinite;
@@ -649,7 +606,7 @@
 	}
 
 	.monster__mouth::before {
-		content: '';
+		content: "";
 		position: absolute;
 		width: 150px;
 		height: 80px;
@@ -658,14 +615,14 @@
 	}
 
 	.monster__mouth::after {
-		content: '';
+		content: "";
 		position: absolute;
 		bottom: -80px;
 		width: 160px;
 		height: 80px;
 		border-top-left-radius: 50%;
 		border-top-right-radius: 50%;
-		background-color: #DC1B50;
+		background-color: #dc1b50;
 		animation: tongue 1.75s infinite;
 	}
 
@@ -693,7 +650,6 @@
 		animation: b 1.75s infinite;
 	}
 
-
 	.avatar-eye {
 		position: absolute;
 		top: -10%;
@@ -707,7 +663,6 @@
 		transform: translateX(-50%);
 	}
 
-
 	.avatar-eye--green {
 		background: linear-gradient(to bottom, #fdfdfd, #c3efea);
 	}
@@ -715,7 +670,6 @@
 	.avatar-eye--violet {
 		background: linear-gradient(to bottom, #fdfdfd, #e6d6f6);
 	}
-
 
 	.eye--left {
 		left: 10%;
@@ -742,7 +696,6 @@
 		border-radius: 100%;
 	}
 
-
 	.pupil--green {
 		background: linear-gradient(135deg, rgba(188, 248, 177, 0.7), #2fa38c 75%);
 	}
@@ -750,7 +703,6 @@
 	.pupil--pink {
 		background: linear-gradient(135deg, #f1a183, #8535cd);
 	}
-
 
 	.avatar-eye-pupil-blackThing {
 		position: absolute;
@@ -969,7 +921,6 @@
 		}
 	}
 
-
 	// 顶部流星
 	.space {
 		position: absolute;
@@ -997,7 +948,7 @@
 		width: 100%;
 		top: -40%;
 		right: -10%;
-		border: 35rpx solid rgba(0, 0, 0, .15);
+		border: 35rpx solid rgba(0, 0, 0, 0.15);
 	}
 
 	.star {
@@ -1005,27 +956,27 @@
 		width: 5rpx;
 		height: 5rpx;
 		border-radius: 50%;
-		background: #FFF;
+		background: #fff;
 		top: 100rpx;
 		left: 400rpx;
 		position: relative;
 		transform-origin: 100% 0;
 		animation: star-ani 6s infinite ease-out;
-		box-shadow: 0 0 5rpx 5rpx rgba(255, 255, 255, .3);
+		box-shadow: 0 0 5rpx 5rpx rgba(255, 255, 255, 0.3);
 		opacity: 0;
 		z-index: 2;
 	}
 
 	.star:after {
-		content: '';
+		content: "";
 		display: block;
 		top: 0rpx;
 		left: 4rpx;
 		border: 0rpx solid #fff;
 		border-width: 0rpx 90rpx 2rpx 90rpx;
-		border-color: transparent transparent transparent rgba(255, 255, 255, .3);
+		border-color: transparent transparent transparent rgba(255, 255, 255, 0.3);
 		transform: rotate(-45deg) translate3d(1rpx, 3rpx, 0);
-		box-shadow: 0 0 1rpx 0 rgba(255, 255, 255, .1);
+		box-shadow: 0 0 1rpx 0 rgba(255, 255, 255, 0.1);
 		transform-origin: 0% 100%;
 		animation: shooting-ani 3s infinite ease-out;
 	}

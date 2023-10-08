@@ -19,8 +19,6 @@
 				</view>
 				<text class="text-df">{{getData.brief}}</text>
 			</view>
-
-
 			<view class="cssBox">
 				<view class="margin-bottom-sm">
 					<text class="text-bold text-lg">治理方法</text>

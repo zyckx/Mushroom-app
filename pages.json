@@ -5,7 +5,7 @@
 	"pages": [{
 			"path": "pages/index/tabbar",
 			"style": {
-				"navigationBarTitleText": "前端铺子",
+				"navigationBarTitleText": "菌棒污染识别",
 				"navigationStyle": "custom"
 			}
 		},
