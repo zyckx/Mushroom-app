@@ -46,11 +46,12 @@
 					style="line-height: 80rpx">
 					<image class="fl margin-right-sm" src="https://cdn.zhoukaiwen.com/pic5.svg" mode="widthFix"
 						style="width: 68rpx; margin-top: 8rpx"></image>
-					<view class="text-shadow text-bold">病害治理方法：</view>
+					<view class="text-shadow text-bold">杂菌污染治理方法：</view>
 					<view class="methods">
 						<view class="methods-item" v-for="
 							(item, index) in methods" :key="index">
-							{{index+1+"."}}{{ item }}</view>
+							{{index+1+"."}}{{ item }}
+						</view>
 					</view>
 				</view>
 			</view>
@@ -76,13 +77,13 @@
 					{
 						imageUrl: "https://z1.ax1x.com/2023/10/09/pPvRQPI.png",
 					},
-	
+
 				],
 
 				methodsList: [{
 						id: 1,
 						name: "绿霉菌",
-						e_name:'chloromyces',
+						e_name: 'chloromyces',
 						methods: [
 							"①用2%甲醛和石碳酸混合液或用克霉灵、除霉剂注射受害部位;亦可用“厌氧发菌”法防治绿霉：将感染严重的菌袋单层平放，上覆盖潮细*3～5厘米，待香菇菌丝布满菌袋后取出，此期间须遮阴，常检查，防高温。",
 							"②也可利用温差进行控制，根据香菇菌丝和绿霉菌丝所需温度不同，把感染后的菌袋处理后运出培养室，置于20℃以下阴凉通风的环境中，可抑制绿霉的扩散，香菇菌丝亦能正常生长。",
@@ -92,7 +93,7 @@
 					{
 						id: 2,
 						name: "黄曲霉",
-						e_name:'aflatoxin',
+						e_name: 'aflatoxin',
 						methods: [
 							"黄曲霉通常在潮湿的环境中繁殖。确保蘑菇房的湿度保持在适宜的水平，通常应控制在85%以下",
 							"提供良好的通风，以减少空气中的湿度，帮助蘑菇干燥并减少霉菌生长的机会。",
@@ -103,7 +104,7 @@
 					{
 						id: 3,
 						name: "链霉菌",
-						e_name:'streptomyces',
+						e_name: 'streptomyces',
 						methods: [
 							"袋口、颈圈、报纸上污染的，去掉污染颈圈、报纸放入 500 倍甲醛液中，并用 0.1% 高锰酸钾或 0.1% 克霉灵溶液，洗净袋口换上经消毒的颈圈、报纸，继续发菌；",
 							"菌袋内出现链孢霉的，可用 500 倍甲醛液或 5% 可湿性甲基托布津液，用注射器注入感染部位后用胶布封住针孔，可控制为害；",
@@ -114,10 +115,9 @@
 					{
 						id: 4,
 						name: "正常",
-						e_name:'nomal',
+						e_name: 'nomal',
 						methods: [
-							"①搞好菇场及工具的消毒，及早清除病变的菇体。",
-							"②用链霉素1：50倍喷洒菌袋，杀灭蕴藏在菌袋中的病菌，防止第二茬复发。",
+							"您的菌棒正常，无杂菌污染",
 						],
 
 					},
@@ -309,7 +309,8 @@
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;
 	}
-	.methods-item{
+
+	.methods-item {
 		margin-top: 10rpx;
 		text-indent: 2em;
 	}
