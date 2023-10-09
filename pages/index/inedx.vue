@@ -66,15 +66,14 @@
 				old: {
 					scrollTop: 0
 				},
-
 				bannerList: [{
-						imageUrl: 'https://s1.ax1x.com/2023/03/21/ppaZQ0O.jpg'
+						imageUrl: 'https://z1.ax1x.com/2023/10/09/pPvRVKO.jpg'
 					},
 					{
-						imageUrl: 'https://s1.ax1x.com/2023/03/21/ppaZ3Ae.png'
+						imageUrl: 'https://z1.ax1x.com/2023/10/09/pPvRuad.png'
 					},
 					{
-						imageUrl: 'https://s1.ax1x.com/2023/03/21/ppaZMnK.jpg'
+						imageUrl: 'https://z1.ax1x.com/2023/10/09/pPvRKIA.png'
 					},
 				],
 				categories: [{

@@ -114,6 +114,33 @@
 				} else if (this.PageCur == 'cases') {
 					// document.title = '宅家学'
 				} else if (this.PageCur == 'news') {
+					// 当切换到news页面时
+					// uni.showToast({
+					// 	title:"暂未开放，请先体验替他功能"
+					// })
+					uni.showModal({
+						title: '提示',
+						content: '应部分政策，暂未开启',
+						showCancel:false,
+						success: function (res) {
+							if (res.confirm) {
+								console.log('用户点击确定');
+								this.PageCur='index'
+								
+								uni.navigateTo({
+									url:"/pages/index/tabbar",
+									success: () => {
+									    uni.navigateTo({
+									    	url:"/"
+									    })
+									}
+
+								})
+							} else if (res.cancel) {
+								console.log('用户点击取消');
+							}
+						}
+					});
 					// document.title = '文章资讯'
 				} else if (this.PageCur == 'me') {
 					// document.title = '个人中心'

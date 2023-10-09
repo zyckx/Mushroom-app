@@ -9,53 +9,18 @@
 				"navigationStyle": "custom"
 			}
 		},
-		{
-			"path": "pages/news/news",
-			"style": {
-				"navigationBarTitleText": "资讯详情",
-				"navigationStyle": "custom"
-			}
-		},
+		
 		{
 			"path": "pages/diseaseDetail",
 			"style": {
 				"navigationBarTitleText": "污染详情"
 			}
 		},
-		{
-			"path": "pages/project/list",
-			"style": {
-				"navigationBarTitleText": "项目展示",
-				"navigationStyle": "custom"
-			}
-		},
-		{
-			"path": "pages/project/project",
-			"style": {
-				"navigationBarTitleText": "项目展示",
-				"navigationStyle": "custom"
-			}
-		},
 
-		{
-			"path": "pages/main/customCamera",
-			"style": {
-				"navigationBarTitleText": "自定义相机/图片编辑器"
-			}
-		},
-		{
-			"path": "pages/main/posterList",
-			"style": {
-				"navigationStyle": "custom",
-				"navigationBarTitleText": "海报设计工具"
-			}
-		},
-		{
-			"path": "pages/main/posterImg",
-			"style": {
-				"navigationStyle": "custom"
-			}
-		},
+		
+	
+	
+	
 		{
 			"path": "pages/login/login",
 			"style": {

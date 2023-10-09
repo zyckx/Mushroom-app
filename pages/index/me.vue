@@ -89,7 +89,7 @@
 			</view>
 
 			<view class="cu-list menu card-menu margin-bottom-lg shadow-shop bg-white text-black my-radius sm-border">
-				<view class="cu-item">
+				<view class="cu-item" v-if="isLogin">
 					<button class="content cu-btn" @click="loginout">
 						<image src="../../static/me/icon/xiaoxi.png" class="png" mode="aspectFit"></image>
 						<text class="text-lg margin-sm">退出登录</text>
@@ -177,6 +177,7 @@
 						color: "",
 					},
 				],
+				isLogin:false
 			};
 		},
 		watch: {
@@ -190,7 +191,10 @@
 			},
 		},
 		mounted() {
-
+				
+		},
+		created() {
+			this.isLogin=uni.getStorageSync("isLogin")||false
 		},
 		onShow() {
 
@@ -221,6 +225,13 @@
 					title: "galaxy",
 				});
 			},
+			loginout(){
+				uni.removeStorageSync("userInfo")
+				uni.removeStorageSync("isLogin")
+				uni.redirectTo({
+					url:"/pages/login/login"
+				})
+			}
 		},
 	};
 </script>

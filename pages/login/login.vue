@@ -5,15 +5,15 @@
 			<view class="t-b">
 				您好，
 				<br />
-				欢迎使用，欢迎登录
+				欢迎登录，欢迎使用
 			</view>
 		</view>
 		<view class="login-view" style="">
 			<view class="t-login">
 				<form class="cl">
 					<view class="t-a">
-						<text class="txt">手机号</text>
-						<input type="number" name="phone" placeholder="请输入您的手机号" maxlength="11"
+						<text class="txt">手机号、昵称</text>
+						<input type="number" name="phone" placeholder="请输入您的手机号、昵称" maxlength="11"
 							v-model="userInfo.phone" />
 					</view>
 					<view class="t-a">
@@ -87,6 +87,7 @@
 						title: '登录成功！',
 						icon: 'none'
 					});
+					this.userInfo={}
 				}
 			},
 			loginout() {
@@ -99,21 +100,21 @@
 			//注册按钮点击
 			reg() {
 				uni.showToast({
-					title: '注册跳转',
+					title: '暂未开启',
 					icon: 'none'
 				});
 			},
 			//等三方微信登录
 			wxLogin() {
 				uni.showToast({
-					title: '微信登录',
+					title: '暂未开启',
 					icon: 'none'
 				});
 			},
 			//第三方支付宝登录
 			zfbLogin() {
 				uni.showToast({
-					title: '支付宝登录',
+					title: '暂未开启',
 					icon: 'none'
 				});
 			}

@@ -88,7 +88,7 @@
 				scrollLeft: 0,
 				newsList: [{
 					id: 1,
-					title: "测试文章1",
+					title: "菌棒文章1",
 					content: "正在开发中",
 					img: "https://cos.qhskis.com/kevin_7ny/1.jpg",
 					createdAt: 1588888888,
@@ -102,27 +102,27 @@
 					},
 					{
 						id: 2,
-						title: "测试项目1",
+						title: "菌棒项目1",
 					},
 					{
 						id: 3,
-						title: "测试项目2",
+						title: "菌棒项目2",
 					},
 					{
 						id: 4,
-						title: "测试项目3",
+						title: "菌棒项目3",
 					},
 					{
 						id: 5,
-						title: "测试项目4",
+						title: "菌棒项目4",
 					},
 					{
 						id: 6,
-						title: "测试项目5",
+						title: "菌棒项目5",
 					},
 					{
 						id: 7,
-						title: "测试项目6",
+						title: "菌棒项目6",
 					},
 				],
 			};
